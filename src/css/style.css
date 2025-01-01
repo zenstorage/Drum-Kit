@@ -20,7 +20,7 @@ body {
     align-items: center;
     gap: 0.5rem;
 
-    background-image: url('src/images/bgk.jpg');
+    background-image: url('../src/images/bgk.jpg');
     background-size: cover;
 }
 
