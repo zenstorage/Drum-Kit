@@ -1,6 +1,6 @@
 function activateKey(ev) {
-    const key = ev.code;
-    const keys = {
+    const KEY = ev.code;
+    const KEYS = {
         'KeyA': { id: 'KeyA', path: '/src/sounds/clap.mp3' },
         'KeyS': { id: 'KeyS', path: '/src/sounds/hihat.mp3' },
         'KeyD': { id: 'KeyD', path: '/src/sounds/kick.mp3' },
@@ -11,18 +11,19 @@ function activateKey(ev) {
         'KeyK': { id: 'KeyK', path: '/src/sounds/snare.mp3' },
         'KeyL': { id: 'KeyL', path: '/src/sounds/bass.mp3' },
     };
-    const keySound = keys[key];
+    const KEY_SOUND = KEYS[KEY];
 
-    if (!keySound) return;
+    if (!KEY_SOUND) return;
 
-    const keyElement = document.getElementById(keySound.id);
+    const KEY_ELEMENT = document.getElementById(KEY_SOUND.id);
 
-    keyElement.classList.add('key-active');
+    KEY_ELEMENT.classList.add('key-active');
 
-    window.addEventListener('keyup', (evt) => keyElement.classList.remove('key-active'), { once: true });
+    const removeActiveClass = () => KEY_ELEMENT.classList.remove('key-active');
+    window.addEventListener('keyup', removeActiveClass, { once: true });
 
-    const audio = new Audio(keySound.path);
-    audio.play();
+    const AUDIO = new Audio(KEY_SOUND.path);
+    AUDIO.play();
 }
 
 window.addEventListener('keydown', (ev) => {
